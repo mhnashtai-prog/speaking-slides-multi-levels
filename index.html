@@ -427,79 +427,70 @@
         max-width: 3.5rem;
       }
     }
-
-    /* Desktop optimization */
-    @media (min-width: 900px) {
-      .container {
-        padding: 1rem;
-      }
-    }
   </style>
 </head>
 <body>
   <div class="container">
-    
-      <header class="header">
-        <div class="brand-logo">INTUITY</div>
-        <div class="brand-subtitle" id="subtitle">Speaking Slides · B1</div>
-      </header>
+    <header class="header">
+      <div class="brand-logo">INTUITY</div>
+      <div class="brand-subtitle" id="subtitle">Speaking Slides · B1</div>
+    </header>
 
-      <main class="card">
-        <div class="card-top">
-          <div class="pill">
-            <span class="pill-dot"></span>
-            <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em;">Tap · Read · Speak</span>
-          </div>
-
-          <div class="level-toggle">
-            <button class="level-btn active" data-level="b1">B1</button>
-            <button class="level-btn" data-level="b2">B2</button>
-            <button class="level-btn" data-level="c2">C2</button>
-          </div>
-
-          <div>
-            <div class="step-label">Focus</div>
-            <div class="step-value" id="topicLabel">Planet</div>
-          </div>
+    <main class="card">
+      <div class="card-top">
+        <div class="pill">
+          <span class="pill-dot"></span>
+          <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em;">Tap · Read · Speak</span>
         </div>
 
-        <div class="q-nav">
-          <div class="q-counter" id="qCounter">Question 1 / 10</div>
-          <div class="nav-dots" id="navDots"></div>
-          <div style="width:40px; text-align:right; font-size:0.7rem; color:#9ca3af;" id="shortTag">Easy</div>
+        <div class="level-toggle">
+          <button class="level-btn active" data-level="b1">B1</button>
+          <button class="level-btn" data-level="b2">B2</button>
+          <button class="level-btn" data-level="c2">C2</button>
         </div>
 
-        <section class="qa-wrap" id="qaWrap">
-          <div>
-            <div class="question" id="questionText">Loading…</div>
-            <div class="answer-main" id="answerMain"></div>
-          </div>
-          <div>
-            <div class="support-row" id="supportRow"></div>
-          </div>
-        </section>
-
-        <div class="hint" id="hintText">
-          <div class="hint-key">▶</div>
-          <span>Loading level…</span>
+        <div>
+          <div class="step-label">Focus</div>
+          <div class="step-value" id="topicLabel">Planet</div>
         </div>
+      </div>
 
-        <div class="bottom-nav">
-          <button class="btn btn-small" id="prevBtn">
-            <span class="btn-icon">←</span>
-            <span style="font-size:0.65rem;">Back</span>
-          </button>
-          <button class="btn" id="repeatBtn">
-            <span class="btn-icon">🔁</span>
-            <span>Again</span>
-          </button>
-          <button class="btn btn-primary btn-small" id="nextBtn">
-            <span>Next</span>
-            <span class="btn-icon">→</span>
-          </button>
+      <div class="q-nav">
+        <div class="q-counter" id="qCounter">Question 1 / 10</div>
+        <div class="nav-dots" id="navDots"></div>
+        <div style="width:40px; text-align:right; font-size:0.7rem; color:#9ca3af;" id="shortTag">Easy</div>
+      </div>
+
+      <section class="qa-wrap" id="qaWrap">
+        <div>
+          <div class="question" id="questionText">Loading…</div>
+          <div class="answer-main" id="answerMain"></div>
         </div>
-      </main>
-    </div>
+        <div>
+          <div class="support-row" id="supportRow"></div>
+        </div>
+      </section>
+
+      <div class="hint" id="hintText">
+        <div class="hint-key">▶</div>
+        <span>Loading level…</span>
+      </div>
+
+      <div class="bottom-nav">
+        <button class="btn btn-small" id="prevBtn">
+          <span class="btn-icon">←</span>
+          <span style="font-size:0.65rem;">Back</span>
+        </button>
+        <button class="btn" id="repeatBtn">
+          <span class="btn-icon">🔁</span>
+          <span>Again</span>
+        </button>
+        <button class="btn btn-primary btn-small" id="nextBtn">
+          <span>Next</span>
+          <span class="btn-icon">→</span>
+        </button>
+      </div>
+    </main>
   </div>
 
   <script>
@@ -516,7 +507,6 @@
     let currentIndex = 0;
 
     // 3) DOM references
-    const appShell    = document.getElementById("appShell");
     const subtitle    = document.getElementById("subtitle");
     const qCounter    = document.getElementById("qCounter");
     const topicLabel  = document.getElementById("topicLabel");
