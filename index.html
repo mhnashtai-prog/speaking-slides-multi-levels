@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>INTUITY – Speaking Map · 3 Levels</title>
+  <title>INTUITY – Speaking Slides · Multi-level</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -365,7 +365,7 @@
   <div class="app-shell" data-level="b1" id="appShell">
     <header class="header">
       <div class="brand-logo">INTUITY</div>
-      <div class="brand-subtitle" id="subtitle">Speaking Map · B1</div>
+      <div class="brand-subtitle" id="subtitle">Speaking Slides · B1</div>
     </header>
 
     <main class="card">
@@ -395,7 +395,7 @@
 
       <section class="qa-wrap" id="qaWrap">
         <div>
-          <div class="question" id="questionText"></div>
+          <div class="question" id="questionText">Loading…</div>
           <div class="answer-main" id="answerMain"></div>
         </div>
         <div>
@@ -405,7 +405,7 @@
 
       <div class="hint" id="hintText">
         <div class="hint-key">▶</div>
-        <span>Say the yellow words. Then point to each bubble.</span>
+        <span>Loading level…</span>
       </div>
 
       <div class="bottom-nav">
@@ -426,387 +426,81 @@
   </div>
 
   <script>
-    const decks = {
-      b1: [
-        {
-          topic: 'Planet',
-          shortTag: 'Easy',
-          question: 'In what ways are human activities harming the planet?',
-          answer: 'We <span class="accent">cut trees</span>, we <span class="accent">dump trash</span>, we run <span class="accent">dirty factories</span>.',
-          support: [
-            { icon: '🌲', text: 'Cutting trees' },
-            { icon: '🗑️', text: 'Too much waste' },
-            { icon: '🏭', text: 'Dirty industry' }
-          ]
-        },
-        {
-          topic: 'Cities',
-          shortTag: 'People',
-          question: 'Why do many people move to big cities?',
-          answer: 'They want <span class="accent">work</span>, more <span class="accent">money</span> and many <span class="accent">chances</span>.',
-          support: [
-            { icon: '💼', text: 'Jobs' },
-            { icon: '💶', text: 'Money' },
-            { icon: '🚇', text: 'Transport' }
-          ]
-        },
-        {
-          topic: 'Technology',
-          shortTag: 'Screen',
-          question: 'How are phones changing our daily life?',
-          answer: 'We <span class="accent">talk</span>, we <span class="accent">work</span>, we even <span class="accent">rest</span> with our phones.',
-          support: [
-            { icon: '📱', text: 'Always online' },
-            { icon: '💬', text: 'Quick chat' },
-            { icon: '😴', text: 'Hard to switch off' }
-          ]
-        },
-        {
-          topic: 'Work',
-          shortTag: 'Jobs',
-          question: 'Why is work–life balance hard today?',
-          answer: 'Work <span class="accent">follows us home</span>, time <span class="accent">feels short</span>, rest is <span class="accent">pushed away</span>.',
-          support: [
-            { icon: '⌚', text: 'Long hours' },
-            { icon: '🏠', text: 'Work at home' },
-            { icon: '🧠', text: 'Tired mind' }
-          ]
-        },
-        {
-          topic: 'Culture',
-          shortTag: 'Change',
-          question: 'How does globalisation change local culture?',
-          answer: '<span class="accent">Old ways fade</span>, <span class="accent">new trends enter</span>, and many lives <span class="accent">mix together</span>.',
-          support: [
-            { icon: '🌐', text: 'Same brands' },
-            { icon: '🎵', text: 'New music' },
-            { icon: '🍔', text: 'Fast food' }
-          ]
-        },
-        {
-          topic: 'Education',
-          shortTag: 'School',
-          question: 'What makes a good teacher?',
-          answer: 'They <span class="accent">care</span>, they <span class="accent">explain simply</span>, they help you <span class="accent">try again</span>.',
-          support: [
-            { icon: '❤️', text: 'Kind' },
-            { icon: '🧩', text: 'Clear' },
-            { icon: '🔁', text: 'Patient' }
-          ]
-        },
-        {
-          topic: 'Health',
-          shortTag: 'Body',
-          question: 'Why do many people feel stressed?',
-          answer: 'We have <span class="accent">too many tasks</span>, <span class="accent">too much news</span> and very <span class="accent">little calm</span>.',
-          support: [
-            { icon: '📂', text: 'Big workload' },
-            { icon: '📺', text: 'Bad news' },
-            { icon: '🧘', text: 'No quiet time' }
-          ]
-        },
-        {
-          topic: 'Money',
-          shortTag: 'Life',
-          question: 'How does money shape our choices?',
-          answer: 'Money can <span class="accent">open doors</span>, but it can also <span class="accent">close hearts</span>.',
-          support: [
-            { icon: '🚪', text: 'More options' },
-            { icon: '🤝', text: 'Power' },
-            { icon: '💔', text: 'Jealousy' }
-          ]
-        },
-        {
-          topic: 'Travel',
-          shortTag: 'World',
-          question: 'Why do people like travelling abroad?',
-          answer: 'They want to <span class="accent">see new places</span>, <span class="accent">taste new food</span> and <span class="accent">meet new people</span>.',
-          support: [
-            { icon: '✈️', text: 'New views' },
-            { icon: '🍲', text: 'New food' },
-            { icon: '🤝', text: 'New friends' }
-          ]
-        },
-        {
-          topic: 'Future',
-          shortTag: 'Hope',
-          question: 'What can young people do to improve the future?',
-          answer: 'They can <span class="accent">learn</span>, <span class="accent">speak up</span> and <span class="accent">help others</span> now.',
-          support: [
-            { icon: '📚', text: 'Keep learning' },
-            { icon: '📢', text: 'Use their voice' },
-            { icon: '🤲', text: 'Support others' }
-          ]
-        }
-      ],
-
-      /* B2 – fuller sentences, a bit more abstract */
-      b2: [
-        {
-          topic: 'Planet',
-          shortTag: 'B2',
-          question: 'In what ways are human activities harming the planet?',
-          answer: 'We <span class="accent">clear huge areas of forest</span>, create <span class="accent">mountains of rubbish</span> and keep <span class="accent">polluting factories</span> running day and night.',
-          support: [
-            { icon: '🌲', text: 'Deforestation' },
-            { icon: '🗑️', text: 'Mass waste' },
-            { icon: '🏭', text: 'Industrial pollution' }
-          ]
-        },
-        {
-          topic: 'Cities',
-          shortTag: 'B2',
-          question: 'Why do many people move to big cities?',
-          answer: 'They look for <span class="accent">better job prospects</span>, <span class="accent">higher salaries</span> and a wider range of <span class="accent">services and experiences</span>.',
-          support: [
-            { icon: '💼', text: 'Career paths' },
-            { icon: '🏢', text: 'Busy business centres' },
-            { icon: '🎭', text: 'Culture & nightlife' }
-          ]
-        },
-        {
-          topic: 'Technology',
-          shortTag: 'B2',
-          question: 'How are phones changing our daily life?',
-          answer: 'Smartphones let us <span class="accent">stay connected</span>, <span class="accent">work on the move</span> and <span class="accent">fill every quiet moment</span> with a screen.',
-          support: [
-            { icon: '📱', text: 'Constant connection' },
-            { icon: '📧', text: 'Work emails' },
-            { icon: '⏰', text: 'No downtime' }
-          ]
-        },
-        {
-          topic: 'Work',
-          shortTag: 'B2',
-          question: 'Why is work–life balance hard today?',
-          answer: 'Modern jobs often demand <span class="accent">long hours</span>, <span class="accent">high targets</span> and <span class="accent">constant availability</span>.',
-          support: [
-            { icon: '⌚', text: 'Overtime' },
-            { icon: '📲', text: 'Always reachable' },
-            { icon: '😓', text: 'Burnout risk' }
-          ]
-        },
-        {
-          topic: 'Culture',
-          shortTag: 'B2',
-          question: 'How does globalisation change local culture?',
-          answer: 'Global brands and media can <span class="accent">dilute traditional customs</span>, but they also <span class="accent">bring new ideas</span> and <span class="accent">mix cultures</span>.',
-          support: [
-            { icon: '🌐', text: 'Shared trends' },
-            { icon: '📺', text: 'Global media' },
-            { icon: '🤝', text: 'Cultural mix' }
-          ]
-        },
-        {
-          topic: 'Education',
-          shortTag: 'B2',
-          question: 'What makes a good teacher?',
-          answer: 'A good teacher <span class="accent">connects with students</span>, <span class="accent">explains clearly</span> and <span class="accent">pushes them just enough</span>.',
-          support: [
-            { icon: '🧠', text: 'Understands learners' },
-            { icon: '🧩', text: 'Makes ideas simple' },
-            { icon: '🚀', text: 'Encourages progress' }
-          ]
-        },
-        {
-          topic: 'Health',
-          shortTag: 'B2',
-          question: 'Why do many people feel stressed?',
-          answer: 'We are under <span class="accent">constant pressure</span> from work, money and social media, and we rarely <span class="accent">switch off</span>.',
-          support: [
-            { icon: '📂', text: 'Heavy workload' },
-            { icon: '💸', text: 'Money worries' },
-            { icon: '📱', text: 'Online pressure' }
-          ]
-        },
-        {
-          topic: 'Money',
-          shortTag: 'B2',
-          question: 'How does money shape our choices?',
-          answer: 'Money can <span class="accent">limit our options</span> or <span class="accent">open new doors</span>, and it often <span class="accent">influences our priorities</span> more than we realise.',
-          support: [
-            { icon: '📊', text: 'Budget limits' },
-            { icon: '🎯', text: 'Life goals' },
-            { icon: '⚖️', text: 'Trade-offs' }
-          ]
-        },
-        {
-          topic: 'Travel',
-          shortTag: 'B2',
-          question: 'Why do people like travelling abroad?',
-          answer: 'Travel lets people <span class="accent">escape routine</span>, <span class="accent">discover new cultures</span> and <span class="accent">see themselves differently</span>.',
-          support: [
-            { icon: '✈️', text: 'Break from routine' },
-            { icon: '🏙️', text: 'New cities' },
-            { icon: '🧭', text: 'Fresh perspective' }
-          ]
-        },
-        {
-          topic: 'Future',
-          shortTag: 'B2',
-          question: 'What can young people do to improve the future?',
-          answer: 'They can <span class="accent">get informed</span>, <span class="accent">take part in community projects</span> and <span class="accent">demand change</span> from leaders.',
-          support: [
-            { icon: '📚', text: 'Learn & question' },
-            { icon: '🤝', text: 'Volunteer' },
-            { icon: '📢', text: 'Speak out' }
-          ]
-        }
-      ],
-
-      /* C2 – more “quality UK press” flavour */
-      c2: [
-        {
-          topic: 'Planet',
-          shortTag: 'C2',
-          question: 'In what ways are human activities harming the planet?',
-          answer: 'Relentless <span class="accent">deforestation</span>, ever-growing <span class="accent">piles of waste</span> and <span class="accent">energy-hungry industry</span> are steadily pushing the planet to its limits.',
-          support: [
-            { icon: '🪓', text: 'Forests stripped away' },
-            { icon: '🚯', text: 'Throw-away culture' },
-            { icon: '🌫️', text: 'Carbon-heavy production' }
-          ]
-        },
-        {
-          topic: 'Cities',
-          shortTag: 'C2',
-          question: 'Why do many people move to big cities?',
-          answer: 'For many, cities promise <span class="accent">social mobility</span>, a sense of <span class="accent">possibility</span> and a lifestyle that feels <span class="accent">plugged into the modern world</span>.',
-          support: [
-            { icon: '🏙️', text: 'Opportunity hubs' },
-            { icon: '🚆', text: 'Fast connections' },
-            { icon: '🎭', text: 'Dense culture' }
-          ]
-        },
-        {
-          topic: 'Technology',
-          shortTag: 'C2',
-          question: 'How are phones changing our daily life?',
-          answer: 'Smartphones have turned quiet moments into <span class="accent">scrolling time</span>, made attention a <span class="accent">scarce resource</span> and blurred the line between <span class="accent">work and rest</span>.',
-          support: [
-            { icon: '📲', text: 'Endless feeds' },
-            { icon: '🧠', text: 'Scattered focus' },
-            { icon: '🌙', text: 'Late-night emails' }
-          ]
-        },
-        {
-          topic: 'Work',
-          shortTag: 'C2',
-          question: 'Why is work–life balance hard today?',
-          answer: 'In many jobs, the expectation is to be <span class="accent">always available</span>, which turns home into an <span class="accent">extension of the office</span> rather than a place to switch off.',
-          support: [
-            { icon: '📲', text: '24/7 inbox' },
-            { icon: '🏠', text: 'Home as workplace' },
-            { icon: '🧯', text: 'Chronic burnout' }
-          ]
-        },
-        {
-          topic: 'Culture',
-          shortTag: 'C2',
-          question: 'How does globalisation change local culture?',
-          answer: 'Globalisation can replace <span class="accent">local colour</span> with a familiar mix of <span class="accent">chain stores and streaming platforms</span>, yet it also creates <span class="accent">new hybrid identities</span>.',
-          support: [
-            { icon: '🛍️', text: 'Same high streets' },
-            { icon: '🎧', text: 'Shared playlists' },
-            { icon: '🌀', text: 'Blended traditions' }
-          ]
-        },
-        {
-          topic: 'Education',
-          shortTag: 'C2',
-          question: 'What makes a good teacher?',
-          answer: 'A good teacher does more than deliver content: they <span class="accent">spark curiosity</span>, <span class="accent">challenge lazy thinking</span> and <span class="accent">stay human in the process</span>.',
-          support: [
-            { icon: '💡', text: 'Ignites interest' },
-            { icon: '🔍', text: 'Asks hard questions' },
-            { icon: '🤝', text: 'Builds trust' }
-          ]
-        },
-        {
-          topic: 'Health',
-          shortTag: 'C2',
-          question: 'Why do many people feel stressed?',
-          answer: 'Many of us live in a loop of <span class="accent">endless notifications</span>, <span class="accent">fragile finances</span> and the quiet feeling that we are <span class="accent">always behind</span>.',
-          support: [
-            { icon: '📱', text: 'Notification overload' },
-            { icon: '💷', text: 'Rising costs' },
-            { icon: '⏳', text: 'Time pressure' }
-          ]
-        },
-        {
-          topic: 'Money',
-          shortTag: 'C2',
-          question: 'How does money shape our choices?',
-          answer: 'Money quietly sets the <span class="accent">limits of what feels possible</span>, steering everything from the jobs we accept to the risks we feel able to take.',
-          support: [
-            { icon: '📉', text: 'Hidden ceilings' },
-            { icon: '🧭', text: 'Paths we follow' },
-            { icon: '🪙', text: 'Trade-offs we make' }
-          ]
-        },
-        {
-          topic: 'Travel',
-          shortTag: 'C2',
-          question: 'Why do people like travelling abroad?',
-          answer: 'Travel offers the chance to <span class="accent">step outside our bubble</span>, see how <span class="accent">other societies organise life</span> and return home with a slightly <span class="accent">wider lens</span>.',
-          support: [
-            { icon: '🌍', text: 'New worlds' },
-            { icon: '🧳', text: 'Different routines' },
-            { icon: '🔭', text: 'Wider outlook' }
-          ]
-        },
-        {
-          topic: 'Future',
-          shortTag: 'C2',
-          question: 'What can young people do to improve the future?',
-          answer: 'Young people can <span class="accent">ask awkward questions</span>, <span class="accent">organise calmly but firmly</span> and <span class="accent">refuse to treat problems as “too big”</span>.',
-          support: [
-            { icon: '❓', text: 'Question the old story' },
-            { icon: '🧑‍🤝‍🧑', text: 'Act together' },
-            { icon: '🌱', text: 'Small changes, often' }
-          ]
-        }
-      ]
+    // 1) JSON sources on GitHub (RAW URLs)
+    const levelSources = {
+      b1: "https://raw.githubusercontent.com/mhnashtai-prog/speaking-slides-multi-levels/main/b1-speaking-map.json",
+      b2: "https://raw.githubusercontent.com/mhnashtai-prog/speaking-slides-multi-levels/main/b2-speaking-map.json",
+      c2: "https://raw.githubusercontent.com/mhnashtai-prog/speaking-slides-multi-levels/main/c2-speaking-map.json"
     };
 
-    let currentLevel = 'b1';
+    // 2) State containers
+    const decks = {}; // level -> { level, label, hint, cards[] }
+    let currentLevel = "b1";
     let currentIndex = 0;
 
-    const appShell   = document.getElementById('appShell');
-    const subtitle   = document.getElementById('subtitle');
-    const qCounter   = document.getElementById('qCounter');
-    const topicLabel = document.getElementById('topicLabel');
-    const shortTag   = document.getElementById('shortTag');
-    const questionText = document.getElementById('questionText');
-    const answerMain = document.getElementById('answerMain');
-    const supportRow = document.getElementById('supportRow');
-    const navDots    = document.getElementById('navDots');
-    const prevBtn    = document.getElementById('prevBtn');
-    const nextBtn    = document.getElementById('nextBtn');
-    const repeatBtn  = document.getElementById('repeatBtn');
-    const qaWrap     = document.getElementById('qaWrap');
-    const hintText   = document.getElementById('hintText');
-    const levelButtons = document.querySelectorAll('.level-btn');
+    // 3) DOM references
+    const appShell    = document.getElementById("appShell");
+    const subtitle    = document.getElementById("subtitle");
+    const qCounter    = document.getElementById("qCounter");
+    const topicLabel  = document.getElementById("topicLabel");
+    const shortTag    = document.getElementById("shortTag");
+    const questionEl  = document.getElementById("questionText");
+    const answerMain  = document.getElementById("answerMain");
+    const supportRow  = document.getElementById("supportRow");
+    const navDots     = document.getElementById("navDots");
+    const prevBtn     = document.getElementById("prevBtn");
+    const nextBtn     = document.getElementById("nextBtn");
+    const repeatBtn   = document.getElementById("repeatBtn");
+    const qaWrap      = document.getElementById("qaWrap");
+    const hintText    = document.getElementById("hintText");
+    const levelButtons = document.querySelectorAll(".level-btn");
 
-    const levelLabels = {
-      b1: 'Speaking Map · B1',
-      b2: 'Speaking Map · B2',
-      c2: 'Speaking Map · C2'
-    };
+    // 4) Load JSON for a given level
+    async function loadLevel(level) {
+      if (decks[level]) return; // already cached
 
-    const levelHints = {
-      b1: 'Say the yellow words. Then point to each bubble.',
-      b2: 'Use the yellow phrase to start your answer, then expand with the bubbles.',
-      c2: 'Steal the yellow line as your headline, then weave in the bubbles naturally.'
-    };
+      const url = levelSources[level];
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+        decks[level] = data; // {level,label,hint,cards}
+      } catch (err) {
+        console.error("Error loading level", level, err);
+        decks[level] = {
+          level,
+          label: "Speaking Slides · " + level.toUpperCase(),
+          hint: "Could not load data for this level.",
+          cards: [
+            {
+              topic: "Error",
+              shortTag: "ERR",
+              question: "Data could not be loaded.",
+              answerHtml: "<span class=\"accent\">Check your internet connection</span> or GitHub file path.",
+              support: [
+                { icon: "🌐", text: "Internet OK?" },
+                { icon: "📁", text: "File exists?" },
+                { icon: "🔁", text: "Try reload" }
+              ]
+            }
+          ]
+        };
+      }
+    }
 
+    function getDeckData() {
+      return decks[currentLevel];
+    }
+
+    // 5) Build dots based on current level's number of cards
     function buildDots() {
-      navDots.innerHTML = '';
-      const deck = decks[currentLevel];
-      deck.forEach((_, index) => {
-        const dot = document.createElement('div');
-        dot.className = 'nav-dot';
-        dot.addEventListener('click', () => {
+      const data = getDeckData();
+      const cards = data.cards || [];
+      navDots.innerHTML = "";
+      cards.forEach((_, index) => {
+        const dot = document.createElement("div");
+        dot.className = "nav-dot";
+        dot.addEventListener("click", () => {
           currentIndex = index;
           render();
         });
@@ -814,70 +508,91 @@
       });
     }
 
+    // 6) Render current card
     function render() {
-      const deck = decks[currentLevel];
-      const card = deck[currentIndex];
+      const data = getDeckData();
+      if (!data) return;
 
-      qCounter.textContent = `Question ${currentIndex + 1} / ${deck.length}`;
-      topicLabel.textContent = card.topic;
-      shortTag.textContent = card.shortTag;
-      questionText.textContent = card.question;
-      answerMain.innerHTML = card.answer;
-      hintText.querySelector('span').textContent = levelHints[currentLevel];
+      const cards = data.cards || [];
+      const card = cards[currentIndex] || cards[0];
 
-      supportRow.innerHTML = '';
-      card.support.forEach(item => {
-        const chip = document.createElement('div');
-        chip.className = 'chip';
-        chip.innerHTML = `<span class="chip-emoji">${item.icon}</span><span>${item.text}</span>`;
+      if (!card) return;
+
+      // text bits
+      qCounter.textContent = `Question ${currentIndex + 1} / ${cards.length}`;
+      topicLabel.textContent = card.topic || "";
+      shortTag.textContent = card.shortTag || "";
+      questionEl.textContent = card.question || "";
+      answerMain.innerHTML = card.answerHtml || "";
+      subtitle.textContent = data.label || ("Speaking Slides · " + currentLevel.toUpperCase());
+      hintText.querySelector("span").textContent = data.hint || "";
+
+      // support chips
+      supportRow.innerHTML = "";
+      (card.support || []).forEach(item => {
+        const chip = document.createElement("div");
+        chip.className = "chip";
+        chip.innerHTML = `<span class="chip-emoji">${item.icon || ""}</span><span>${item.text || ""}</span>`;
         supportRow.appendChild(chip);
       });
 
-      const dots = navDots.querySelectorAll('.nav-dot');
+      // dots active state
+      const dots = navDots.querySelectorAll(".nav-dot");
       dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentIndex);
+        dot.classList.toggle("active", index === currentIndex);
       });
 
-      prevBtn.classList.toggle('btn-disabled', currentIndex === 0);
-      nextBtn.classList.toggle('btn-disabled', currentIndex === deck.length - 1);
+      // prev/next disabled
+      prevBtn.classList.toggle("btn-disabled", currentIndex === 0);
+      nextBtn.classList.toggle("btn-disabled", currentIndex === cards.length - 1);
 
-      subtitle.textContent = levelLabels[currentLevel];
-      appShell.setAttribute('data-level', currentLevel);
+      // level accent
+      appShell.setAttribute("data-level", currentLevel);
     }
 
-    prevBtn.addEventListener('click', () => {
+    // 7) Button handlers
+    prevBtn.addEventListener("click", () => {
       if (currentIndex === 0) return;
       currentIndex -= 1;
       render();
     });
 
-    nextBtn.addEventListener('click', () => {
-      const deck = decks[currentLevel];
-      if (currentIndex === deck.length - 1) return;
+    nextBtn.addEventListener("click", () => {
+      const data = getDeckData();
+      const cards = data.cards || [];
+      if (currentIndex === cards.length - 1) return;
       currentIndex += 1;
       render();
     });
 
-    repeatBtn.addEventListener('click', () => {
-      qaWrap.style.transform = 'scale(0.97)';
-      setTimeout(() => { qaWrap.style.transform = 'scale(1)'; }, 150);
+    repeatBtn.addEventListener("click", () => {
+      qaWrap.style.transform = "scale(0.97)";
+      setTimeout(() => { qaWrap.style.transform = "scale(1)"; }, 150);
     });
 
     levelButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const level = btn.getAttribute('data-level');
+      btn.addEventListener("click", async () => {
+        const level = btn.getAttribute("data-level");
         if (level === currentLevel) return;
         currentLevel = level;
         currentIndex = 0;
-        levelButtons.forEach(b => b.classList.toggle('active', b === btn));
+        levelButtons.forEach(b => b.classList.toggle("active", b === btn));
+        questionEl.textContent = "Loading…";
+        answerMain.innerHTML = "";
+        supportRow.innerHTML = "";
+        hintText.querySelector("span").textContent = "Loading level…";
+        await loadLevel(level);
         buildDots();
         render();
       });
     });
 
-    buildDots();
-    render();
+    // 8) Initial boot: load B1, then render
+    (async () => {
+      await loadLevel("b1");
+      buildDots();
+      render();
+    })();
   </script>
 </body>
 </html>
-
