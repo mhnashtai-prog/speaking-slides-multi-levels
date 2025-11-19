@@ -23,7 +23,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0.75rem;
+      padding: 2rem;
       overflow-x: hidden;
       position: relative;
     }
@@ -39,23 +39,32 @@
       z-index: 0;
     }
 
-    .app-shell {
+    .container {
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      max-width: 900px;
       width: 100%;
-      max-width: 430px; /* phone size */
-      transition: transform 0.25s ease;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
-    /* change accent by level */
-    .app-shell[data-level="b1"] { --accent:#C9A961; --accent-soft:rgba(201,169,97,0.32); --accent-bg:rgba(201,169,97,0.2);}
-    .app-shell[data-level="b2"] { --accent:#22c1c3; --accent-soft:rgba(34,193,195,0.32); --accent-bg:rgba(34,193,195,0.18);}
-    .app-shell[data-level="c2"] { --accent:#a78bfa; --accent-soft:rgba(167,139,250,0.4); --accent-bg:rgba(167,139,250,0.18);}
+    /* change accent by level - apply to container instead */
+    .container[data-level="b1"] { --accent:#C9A961; --accent-soft:rgba(201,169,97,0.32); --accent-bg:rgba(201,169,97,0.2);}
+    .container[data-level="b2"] { --accent:#22c1c3; --accent-soft:rgba(34,193,195,0.32); --accent-bg:rgba(34,193,195,0.18);}
+    .container[data-level="c2"] { --accent:#a78bfa; --accent-soft:rgba(167,139,250,0.4); --accent-bg:rgba(167,139,250,0.18);}
 
     /* HEADER */
     .header {
+      background: rgba(28, 28, 30, 0.95);
+      backdrop-filter: blur(40px);
+      border-bottom: 1px solid rgba(84, 84, 88, 0.3);
+      padding: 0.5rem 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       text-align: center;
-      margin-bottom: 0.75rem;
     }
 
     .brand-logo {
@@ -78,7 +87,7 @@
       letter-spacing: 0.12em;
     }
 
-    /* MAIN CARD */
+    /* MAIN CARD - NEUMORPHIC */
     .card {
       background: rgba(20, 20, 22, 0.9);
       backdrop-filter: blur(30px) saturate(160%);
@@ -92,6 +101,8 @@
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
+      flex: 1;
+      margin-bottom: 1.5rem;
     }
 
     /* TOP BAR */
@@ -183,19 +194,20 @@
     }
 
     .nav-dot {
-      width: 7px;
-      height: 7px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.3s;
     }
 
     .nav-dot.active {
       background: var(--accent);
-      box-shadow: 0 0 10px var(--accent-soft);
-      transform: scale(1.25);
+      border-color: var(--accent);
+      box-shadow: 0 0 12px var(--accent-soft);
+      transform: scale(1.2);
     }
 
     .nav-dot:hover:not(.active) {
@@ -203,16 +215,19 @@
       transform: scale(1.1);
     }
 
-    /* QUESTION + ANSWER AREA */
+    /* QUESTION + ANSWER AREA - NEUMORPHIC */
     .qa-wrap {
       margin-top: 0.3rem;
-      padding: 0.75rem 0.7rem;
+      padding: 1.5rem;
       border-radius: 0.9rem;
-      background:
-        radial-gradient(circle at top left, var(--accent-bg), transparent 55%),
-        rgba(0, 0, 0, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      min-height: 9.5rem;
+      /* Neumorphic effect */
+      background: 
+        linear-gradient(145deg, rgba(25, 25, 27, 0.8), rgba(15, 15, 17, 0.9));
+      box-shadow: 
+        inset 8px 8px 16px rgba(0, 0, 0, 0.6),
+        inset -8px -8px 16px rgba(40, 40, 42, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -221,15 +236,15 @@
     }
 
     .question {
-      font-size: 0.75rem;
+      font-size: 0.875rem;
       color: #9ca3af;
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
     .answer-main {
-      margin-top: 0.25rem;
+      margin-top: 0.5rem;
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       font-weight: 800;
       line-height: 1.2;
       color: #fef3c7;
@@ -245,7 +260,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.35rem;
-      margin-top: 0.3rem;
+      margin-top: 0.5rem;
     }
 
     .chip {
@@ -297,10 +312,11 @@
 
     .btn {
       flex: 1;
-      min-height: 2.1rem;
+      min-height: 2.5rem;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
       color: #e5e5e7;
       font-size: 0.75rem;
       font-weight: 600;
@@ -311,7 +327,12 @@
       justify-content: center;
       gap: 0.35rem;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover:not(.btn-disabled) {
+      background: rgba(0, 0, 0, 0.5);
+      border-color: rgba(201, 169, 97, 0.3);
     }
 
     .btn-primary {
@@ -321,13 +342,18 @@
       box-shadow: 0 3px 10px var(--accent-soft);
     }
 
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #d4b46e 0%, #fef9c3 100%);
+      box-shadow: 0 4px 12px var(--accent-soft);
+    }
+
     .btn:active {
       transform: translateY(1px);
       box-shadow: none;
     }
 
     .btn-disabled {
-      opacity: 0.25;
+      opacity: 0.3;
       cursor: not-allowed;
       box-shadow: none;
     }
@@ -337,92 +363,143 @@
     }
 
     .btn-small {
-      max-width: 3.2rem;
+      max-width: 4rem;
       flex: 0 0 auto;
     }
 
     @media (max-height: 700px) {
       .qa-wrap { min-height: 0; }
-      .answer-main { font-size: 1.1rem; }
+      .answer-main { font-size: 1.3rem; }
     }
 
-    /* SCALE UP FOR PC + PROJECTOR */
-    @media (min-width: 900px) {
-      .app-shell {
-        transform: scale(2.2);
-        transform-origin: top center;
-        margin-top: 3rem;
+    /* Mobile */
+    @media (max-width: 768px) {
+      body {
+        padding: 0.5rem;
       }
 
-      body {
-        justify-content: center;
-        align-items: flex-start;
+      .container {
+        padding: 0;
+      }
+
+      .header {
+        padding: 0.5rem 0.75rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .brand-logo {
+        font-size: 1.125rem;
+      }
+
+      .brand-subtitle {
+        font-size: 0.625rem;
+      }
+
+      .card {
+        padding: 0.85rem 0.75rem;
+      }
+
+      .qa-wrap {
+        padding: 1.2rem 1rem;
+      }
+
+      .answer-main {
+        font-size: 1.25rem;
+      }
+
+      .question {
+        font-size: 0.8rem;
+      }
+
+      /* Make navigation more visible on mobile */
+      .nav-dot {
+        width: 14px;
+        height: 14px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .btn {
+        min-height: 2.75rem;
+        font-size: 0.7rem;
+      }
+
+      .btn-small {
+        max-width: 3.5rem;
+      }
+    }
+
+    /* Desktop optimization */
+    @media (min-width: 900px) {
+      .container {
+        padding: 1rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="app-shell" data-level="b1" id="appShell">
-    <header class="header">
-      <div class="brand-logo">INTUITY</div>
-      <div class="brand-subtitle" id="subtitle">Speaking Slides · B1</div>
-    </header>
+  <div class="container">
+    
+      <header class="header">
+        <div class="brand-logo">INTUITY</div>
+        <div class="brand-subtitle" id="subtitle">Speaking Slides · B1</div>
+      </header>
 
-    <main class="card">
-      <div class="card-top">
-        <div class="pill">
-          <span class="pill-dot"></span>
-          <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em;">Tap · Read · Speak</span>
+      <main class="card">
+        <div class="card-top">
+          <div class="pill">
+            <span class="pill-dot"></span>
+            <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em;">Tap · Read · Speak</span>
+          </div>
+
+          <div class="level-toggle">
+            <button class="level-btn active" data-level="b1">B1</button>
+            <button class="level-btn" data-level="b2">B2</button>
+            <button class="level-btn" data-level="c2">C2</button>
+          </div>
+
+          <div>
+            <div class="step-label">Focus</div>
+            <div class="step-value" id="topicLabel">Planet</div>
+          </div>
         </div>
 
-        <div class="level-toggle">
-          <button class="level-btn active" data-level="b1">B1</button>
-          <button class="level-btn" data-level="b2">B2</button>
-          <button class="level-btn" data-level="c2">C2</button>
+        <div class="q-nav">
+          <div class="q-counter" id="qCounter">Question 1 / 10</div>
+          <div class="nav-dots" id="navDots"></div>
+          <div style="width:40px; text-align:right; font-size:0.7rem; color:#9ca3af;" id="shortTag">Easy</div>
         </div>
 
-        <div>
-          <div class="step-label">Focus</div>
-          <div class="step-value" id="topicLabel">Planet</div>
+        <section class="qa-wrap" id="qaWrap">
+          <div>
+            <div class="question" id="questionText">Loading…</div>
+            <div class="answer-main" id="answerMain"></div>
+          </div>
+          <div>
+            <div class="support-row" id="supportRow"></div>
+          </div>
+        </section>
+
+        <div class="hint" id="hintText">
+          <div class="hint-key">▶</div>
+          <span>Loading level…</span>
         </div>
-      </div>
 
-      <div class="q-nav">
-        <div class="q-counter" id="qCounter">Question 1 / 10</div>
-        <div class="nav-dots" id="navDots"></div>
-        <div style="width:40px; text-align:right; font-size:0.7rem; color:#9ca3af;" id="shortTag">Easy</div>
-      </div>
-
-      <section class="qa-wrap" id="qaWrap">
-        <div>
-          <div class="question" id="questionText">Loading…</div>
-          <div class="answer-main" id="answerMain"></div>
+        <div class="bottom-nav">
+          <button class="btn btn-small" id="prevBtn">
+            <span class="btn-icon">←</span>
+            <span style="font-size:0.65rem;">Back</span>
+          </button>
+          <button class="btn" id="repeatBtn">
+            <span class="btn-icon">🔁</span>
+            <span>Again</span>
+          </button>
+          <button class="btn btn-primary btn-small" id="nextBtn">
+            <span>Next</span>
+            <span class="btn-icon">→</span>
+          </button>
         </div>
-        <div>
-          <div class="support-row" id="supportRow"></div>
-        </div>
-      </section>
-
-      <div class="hint" id="hintText">
-        <div class="hint-key">▶</div>
-        <span>Loading level…</span>
-      </div>
-
-      <div class="bottom-nav">
-        <button class="btn btn-small" id="prevBtn">
-          <span class="btn-icon">←</span>
-          <span style="font-size:0.65rem;">Back</span>
-        </button>
-        <button class="btn" id="repeatBtn">
-          <span class="btn-icon">🔁</span>
-          <span>Again</span>
-        </button>
-        <button class="btn btn-primary btn-small" id="nextBtn">
-          <span>Next</span>
-          <span class="btn-icon">→</span>
-        </button>
-      </div>
-    </main>
+      </main>
+    </div>
   </div>
 
   <script>
@@ -547,7 +624,7 @@
       nextBtn.classList.toggle("btn-disabled", currentIndex === cards.length - 1);
 
       // level accent
-      appShell.setAttribute("data-level", currentLevel);
+      document.querySelector(".container").setAttribute("data-level", currentLevel);
     }
 
     // 7) Button handlers
